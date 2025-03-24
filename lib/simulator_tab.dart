@@ -165,7 +165,7 @@ class _SimulatorTabState extends State<SimulatorTab> {
       }
 
       final memData =
-          _simulator.showMem(segmentName, memoryStartAddress, memoryPageSize);
+          _simulator.showMem(segmentName, memoryStartAddress, memoryPageSize*4);
       final memPairs = memData.split(';');
 
       setState(() {
@@ -929,6 +929,7 @@ class _SimulatorTabState extends State<SimulatorTab> {
                         '0x${address.toRadixString(16).padLeft(8, '0')}';
                     // Get the word from the memory map, defaulting to "0x00000000"
                     final wordStr = memoryMap[addressHex] ?? '00000000';
+                    print("Here is the wordStr: $wordStr");
                     // Parse the word to an integer.
                     final word = int.tryParse(wordStr, radix: 16) ?? 0;
 

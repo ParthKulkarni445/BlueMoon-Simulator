@@ -467,8 +467,8 @@ struct PMI
         string result = "";
         for (int i = 0; i < count; i++)
         {
-            int addr = startAddr + i * 4;
-            string addrHex = dec_to_hex_32bit(addr);
+            int addr = startAddr + i ;
+            string addrHex = "0x" + dec_to_hex_32bit(addr);
 
             string value = "";
             if (addr < 268435456 && segment == "text")
@@ -825,6 +825,7 @@ public:
             {
                 flag = false;
                 appendToConsole("=> End of the Program Encountered");
+                g_running = false;
             }
             else if (opcode == "0110011")
             {
